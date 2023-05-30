@@ -1,0 +1,54 @@
+import React, { useCallback } from 'react';
+import Animated, { useAnimatedScrollHandler, useSharedValue } from 'react-native-reanimated';
+import { ListRenderItem } from '@shopify/flash-list';
+
+import Loader from '@commons/components/loader';
+
+import Header from './components/home/header';
+import ListItem from './components/home/list/ListItem';
+
+import useHome from '@commons/hooks/useHome';
+
+import { Show } from '@commons/types/responses/shows';
+
+import { Container, List } from './styles';
+
+const AnimatedList = Animated.createAnimatedComponent(List);
+
+const Home: React.FC = () => {
+  const { states, functions } = useHome();
+
+  const scrollValue = useSharedValue(0);
+
+  const handler = useAnimatedScrollHandler({
+    onScroll: (event) => {
+      scrollValue.value = event.contentOffset.y;
+    },
+  });
+
+  const renderItem: ListRenderItem<Show> = useCallback(({ item }) => <ListItem item={item} />, []);
+  const listFooterComponent: ListRenderItem<Show> = useCallback(
+    () => <Loader isLoading={states.isFetchingNextPage} />,
+    [states.isFetchingNextPage],
+  );
+
+  return (
+    <Container>
+      <Header scrolledValue={scrollValue} onSearch={functions.handleSearch} />
+
+      <AnimatedList
+        keyExtractor={(item: Show, idx: number) => String(item.id + idx)}
+        data={states.shows}
+        onScroll={handler}
+        renderItem={renderItem}
+        onEndReachedThreshold={0.5}
+        onEndReached={functions.fetchNextPage}
+        ListFooterComponent={listFooterComponent}
+        showsVerticalScrollIndicator={false}
+        estimatedItemSize={110}
+      />
+    </Container>
+  );
+};
+
+export default Home;
