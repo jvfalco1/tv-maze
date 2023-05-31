@@ -4,12 +4,13 @@ import { Container, Title } from './styles';
 
 type ChipProps = {
   title: string;
+  big?: boolean;
 };
 
-const Chip: React.FC<ChipProps> = ({ title }: ChipProps) => {
+const Chip: React.FC<ChipProps> = ({ title, big = false }: ChipProps) => {
   return (
-    <Container>
-      <Title>{title}</Title>
+    <Container big={big}>
+      <Title big={big}>{title}</Title>
     </Container>
   );
 };

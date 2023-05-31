@@ -10,7 +10,7 @@ export type GetShowsParamReturn = {
 };
 
 async function getShowById({ id }: GetShowsParam): Promise<GetShowsParamReturn> {
-  const url = `shows/${id}?embed[]=images&embed[]=seasons&embed[]=cast`;
+  const url = `shows/${id}?embed[]=images&embed[]=cast&embed[]=episodes`;
 
   const { data } = await api.get(url);
 

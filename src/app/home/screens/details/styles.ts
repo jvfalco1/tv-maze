@@ -1,6 +1,16 @@
 import FastImage from 'react-native-fast-image';
 import LinearGradient from 'react-native-linear-gradient';
 import styled from 'styled-components/native';
+import { ScrollView } from 'react-native';
+
+export const Scroll = styled(ScrollView).attrs({
+  contentContainerStyle: {
+    flexGrow: 1,
+    paddingBottom: 30,
+  },
+})`
+  background-color: ${({ theme }) => theme.colors.gray_900};
+`;
 
 export const Container = styled.View`
   flex: 1;
@@ -9,7 +19,7 @@ export const Container = styled.View`
 
 export const Header = styled.View`
   position: relative;
-  height: 55%;
+  height: 300px;
 
   justify-content: space-between;
 `;
@@ -50,12 +60,33 @@ export const InfoContainer = styled.View`
   padding: ${({ theme }) => theme.spacing.small};
 `;
 
-export const Content = styled.View`
+export const Section = styled.View`
   padding: ${({ theme }) => theme.spacing.small};
+`;
+
+export const SectionTitle = styled.Text`
+  color: ${({ theme }) => theme.colors.white};
+  font-family: ${({ theme }) => theme.fonts.inter.semibold};
+  font-size: 24px;
+  margin-bottom: ${({ theme }) => theme.spacing.tiny};
 `;
 
 export const Description = styled.Text`
   color: ${({ theme }) => theme.colors.gray_300};
   font-family: ${({ theme }) => theme.fonts.inter.semibold};
   font-size: 14px;
+`;
+
+export const ChipsContainer = styled.View`
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  width: 100%;
+`;
+
+export const ScheduleTime = styled.Text`
+  color: ${({ theme }) => theme.colors.gray_300};
+  font-family: ${({ theme }) => theme.fonts.inter.regular};
+  font-size: 14px;
+  margin-bottom: ${({ theme }) => theme.spacing.tiny};
 `;
