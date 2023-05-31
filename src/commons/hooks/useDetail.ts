@@ -1,14 +1,25 @@
-import { RouteProp, useRoute } from "@react-navigation/native";
-import { NavigationProps } from "../../types";
+import { RouteProp, useRoute, useNavigation } from '@react-navigation/native';
+
+import { AuthorizedScreens, AuthorizedStackNavigation } from '@commons/types/navigation/types';
+import { useEffect } from 'react';
+import useFetchById from '@app/main/screens/tabs/home/hooks/useFetchById';
 
 const useDetail = () => {
   const {
-    params: { character },
-  } = useRoute<RouteProp<NavigationProps, "Details">>();
+    params: { id },
+  } = useRoute<RouteProp<AuthorizedScreens, 'Details'>>();
+
+  const { setOptions } = useNavigation<AuthorizedStackNavigation>();
+
+  const { show } = useFetchById({ id });
+
+  useEffect(() => {
+    setOptions({ title: show?.name, headerBackTitleVisible: false });
+  }, [setOptions, show]);
 
   return {
     states: {
-      character,
+      show,
     },
   };
 };

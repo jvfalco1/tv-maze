@@ -9,6 +9,7 @@ import {
   CompanySlogan,
   Container,
   Content,
+  Icon,
   SearchContainer,
   SearchInput,
 } from './styles';
@@ -21,7 +22,7 @@ type HeaderProps = {
 
 const _MAX_HEIGHT = Platform.OS === 'ios' ? 200 : 180;
 const _MIN_HEIGHT = Platform.OS === 'ios' ? 140 : 100;
-const _START_ANIMATION_AT = Platform.OS === 'ios' ? 80 : 90;
+const _START_ANIMATION_AT = Platform.OS === 'ios' ? 80 : 120;
 const _INITIAL_SCROLL_VALUE = 0;
 
 const inputRange = [_INITIAL_SCROLL_VALUE, _START_ANIMATION_AT];
@@ -73,6 +74,7 @@ const Header: React.FC<HeaderProps> = ({ scrolledValue, onSearch }) => {
           <CompanySlogan>Find the best TV show.</CompanySlogan>
         </AnimatableView>
         <SearchContainer style={translateAnimation}>
+          <Icon />
           <SearchInput onChangeText={setSearch} value={search} placeholder="Search" />
         </SearchContainer>
       </Content>

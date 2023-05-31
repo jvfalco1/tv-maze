@@ -19,7 +19,7 @@ export const Container = styled.View`
   justify-content: space-around;
   width: 100%;
 
-  background-color: rgba(33, 33, 33, 0.2);
+  background-color: rgba(0, 0, 0, 0.05);
 
   position: absolute;
   bottom: 0;
@@ -31,7 +31,7 @@ export const Container = styled.View`
     isAndroid &&
     css`
       padding: 12px 16px;
-      background-color: rgba(33, 33, 33, 0.5);
+      background-color: rgba(33, 33, 33, 0.1);
     `}
 `;
 

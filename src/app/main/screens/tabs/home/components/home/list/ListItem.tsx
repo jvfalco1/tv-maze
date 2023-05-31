@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { TouchableWithoutFeedback } from 'react-native';
 
 import Chip from '@commons/components/chips';
@@ -7,6 +7,8 @@ import { Show } from '@commons/types/responses/shows';
 
 import { Avatar, ChipsContainer, Container, Name, Content } from './styles';
 import Animated, { FadeInRight, FadeOutRight, Layout } from 'react-native-reanimated';
+import { useNavigation } from '@react-navigation/native';
+import { AuthorizedStackNavigation } from '@commons/types/navigation/types';
 
 const Touchable = Animated.createAnimatedComponent(TouchableWithoutFeedback);
 
@@ -15,11 +17,18 @@ type ListItemProps = {
 };
 
 const ListItem: React.FC<ListItemProps> = ({ item }) => {
+  const { navigate } = useNavigation<AuthorizedStackNavigation>();
+
+  const handleNavigate = useCallback(() => {
+    navigate('Details', { id: item.id });
+  }, [item, navigate]);
+
   return (
     <Touchable
       entering={FadeInRight.duration(500)}
       exiting={FadeOutRight.duration(500)}
-      layout={Layout.springify()}>
+      layout={Layout.springify()}
+      onPress={handleNavigate}>
       <Container>
         <Avatar source={{ uri: item.image?.medium }} />
         <Content>

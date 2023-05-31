@@ -36,17 +36,26 @@ const Home: React.FC = () => {
     <Container>
       <Header scrolledValue={scrollValue} onSearch={functions.handleSearch} />
 
-      <AnimatedList
-        keyExtractor={(item: Show, idx: number) => String(item.id + idx)}
-        data={states.shows}
-        onScroll={handler}
-        renderItem={renderItem}
-        onEndReachedThreshold={0.5}
-        onEndReached={functions.fetchNextPage}
-        ListFooterComponent={listFooterComponent}
-        showsVerticalScrollIndicator={false}
-        estimatedItemSize={110}
-      />
+      {states.isLoading ? (
+        <Loader isLoading />
+      ) : (
+        <AnimatedList
+          keyExtractor={(item: Show, idx: number) => String(item.id + idx)}
+          data={states.shows}
+          onScroll={handler}
+          renderItem={renderItem}
+          onEndReachedThreshold={0.5}
+          onEndReached={functions.fetchNextPage}
+          ListFooterComponent={listFooterComponent}
+          showsVerticalScrollIndicator={false}
+          estimatedItemSize={110}
+          onViewableItemsChanged={functions.handleViewabilityChange}
+          viewabilityConfig={{
+            itemVisiblePercentThreshold: 75,
+            minimumViewTime: 2000,
+          }}
+        />
+      )}
     </Container>
   );
 };

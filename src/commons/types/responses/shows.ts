@@ -33,8 +33,28 @@ export interface Show {
   updated: number;
   _links: Links;
   score: number;
+  _embedded: Embedded;
 }
 
+export interface Embedded {
+  images: {
+    id: number;
+    type: 'poster' | 'banner' | 'background';
+    main: boolean;
+    resolutions: {
+      original: {
+        url: string;
+        width: number;
+        height: number;
+      };
+      medium: {
+        url: string;
+        width: number;
+        height: number;
+      };
+    };
+  }[];
+}
 export interface Schedule {
   time: string;
   days: string[];

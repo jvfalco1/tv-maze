@@ -1,5 +1,6 @@
 import Animated from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Feather from 'react-native-vector-icons/Feather';
 
 import styled from 'styled-components/native';
 
@@ -17,20 +18,28 @@ export const Content = styled(SafeAreaView)`
 
 export const SearchContainer = styled(Animated.View)`
   align-items: center;
-  background-color: aliceblue;
-  border-radius: 12px;
+  background-color: white;
+  border-radius: 8px;
   height: 44px;
-  padding: 4px;
+  padding: 0 12px;
   width: 100%;
+  flex-direction: row;
 `;
 
 export const SearchInput = styled.TextInput`
-  padding: 8px;
+  padding: 0 16px;
   height: 100%;
   width: 100%;
   background-color: white;
   color: black;
-  border-radius: 20px;
+  border-radius: 8px;
+`;
+
+export const Icon = styled(Feather).attrs({
+  name: 'search',
+})`
+  color: ${({ theme }) => theme.colors.gray_800};
+  font-size: 16px;
 `;
 
 export const CompanySlogan = styled.Text`

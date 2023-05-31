@@ -3,7 +3,7 @@ import Animated from 'react-native-reanimated';
 import FastImage from 'react-native-fast-image';
 
 export const Container = styled.View`
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.gray_800};
   flex-direction: row;
 
   margin-top: ${({ theme }) => theme.spacing.small};
@@ -11,14 +11,15 @@ export const Container = styled.View`
   width: 100%;
 
   elevation: 5;
-  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 5px 8px rgba(255, 255, 255, 0.05);
 `;
 
 export const Avatar = styled(FastImage).attrs({
   resizeMode: 'cover',
 })`
+  align-items: flex-start;
   width: 120px;
-  height: 96px;
+  height: 120px;
 
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
@@ -27,7 +28,9 @@ export const Avatar = styled(FastImage).attrs({
 `;
 
 export const Name = styled(Animated.Text)`
-  font-size: 22px;
+  color: ${({ theme }) => theme.colors.white};
+  font-size: 18px;
+  font-family: ${({ theme }) => theme.fonts.inter.regular};
 `;
 
 export const Content = styled.View`

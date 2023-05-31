@@ -12,7 +12,6 @@ const MazeDefaultTheme = {
     primary_600: '#222977',
 
     black: '#000000',
-    gray_800_opacity: '#22222901',
     gray_050: '#F7F7F8',
     gray_100: '#D7D7DB',
     gray_200: '#B7B7BE',
@@ -22,6 +21,7 @@ const MazeDefaultTheme = {
     gray_600: '#454552',
     gray_700: '#34343E',
     gray_800: '#222229',
+    gray_900: '#070709',
 
     green_050: '#F2FFFC',
     green_100: '#C2F5EA',
