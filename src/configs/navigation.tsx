@@ -6,22 +6,12 @@ import {
 } from '@react-navigation/native-stack';
 
 import Tabs from '@app/main/screens';
-import { Details } from '@app/home';
-
-import { useTheme } from 'styled-components/native';
-
-import HeaderLeft from '@app/main/screens/tabs/home/components/navigation/headerLeft';
-import { HeaderBackButtonProps } from '@react-navigation/native-stack/lib/typescript/src/types';
+import { ShowDetails, EpisodeDetails } from '@app/home';
 
 const Stack = createNativeStackNavigator();
 
 const Navigation: React.FC = () => {
   const navigationRef = useRef<NavigationContainerRef<any>>(null);
-  const { colors, fonts } = useTheme();
-
-  const headerLeft = useCallback(({ canGoBack }: HeaderBackButtonProps) => {
-    return canGoBack ? <HeaderLeft /> : null;
-  }, []);
 
   const screenOptions = useCallback((): NativeStackNavigationOptions => {
     return {
@@ -47,8 +37,13 @@ const Navigation: React.FC = () => {
           />
 
           <Stack.Screen
-            component={Details}
-            name={'Details'}
+            component={ShowDetails}
+            name={'ShowDetails'}
+            options={{ headerBackTitleVisible: false }}
+          />
+          <Stack.Screen
+            component={EpisodeDetails}
+            name={'EpisodeDetails'}
             options={{ headerBackTitleVisible: false }}
           />
         </Stack.Group>

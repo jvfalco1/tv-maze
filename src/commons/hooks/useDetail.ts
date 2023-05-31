@@ -3,12 +3,13 @@ import { RouteProp, useRoute, useNavigation } from '@react-navigation/native';
 import { AuthorizedScreens, AuthorizedStackNavigation } from '@commons/types/navigation/types';
 import { useEffect, useMemo } from 'react';
 import useFetchById from '@app/main/screens/tabs/home/hooks/useFetchById';
-import { Season } from '@commons/types/responses/shows';
+import { Episodes, Season } from '@commons/types/responses/shows';
+import { SectionListData } from 'react-native/types';
 
 const useDetail = () => {
   const {
     params: { id },
-  } = useRoute<RouteProp<AuthorizedScreens, 'Details'>>();
+  } = useRoute<RouteProp<AuthorizedScreens, 'ShowDetails'>>();
 
   const { setOptions } = useNavigation<AuthorizedStackNavigation>();
 
@@ -33,24 +34,30 @@ const useDetail = () => {
 
       acc.push({
         title: seasonTitle,
-        data: [].concat(ep),
+        data: [].concat(ep as any),
       });
 
       return acc;
     }, []);
 
-    return result;
+    return result as SectionListData<Episodes, Season>[];
   }, [show?._embedded.episodes]);
-
-  console.log({ sectionList });
 
   useEffect(() => {
     setOptions({ title: show?.name, headerBackTitleVisible: false });
   }, [setOptions, show]);
 
+  const heroImage = show?._embedded.images.find(
+    (img) => img.type === 'background' && img.resolutions.original?.url !== undefined,
+  );
+
   return {
     states: {
+      sectionList,
       show,
+      backgroundImage: heroImage
+        ? heroImage.resolutions.original.url
+        : (show?.image.original as string),
     },
   };
 };

@@ -20,7 +20,7 @@ const ListItem: React.FC<ListItemProps> = ({ item }) => {
   const { navigate } = useNavigation<AuthorizedStackNavigation>();
 
   const handleNavigate = useCallback(() => {
-    navigate('Details', { id: item.id });
+    navigate('ShowDetails', { id: item.id });
   }, [item, navigate]);
 
   return (

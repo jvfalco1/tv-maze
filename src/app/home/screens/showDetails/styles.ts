@@ -19,7 +19,7 @@ export const Container = styled.View`
 
 export const Header = styled.View`
   position: relative;
-  height: 300px;
+  height: 50%;
 
   justify-content: space-between;
 `;

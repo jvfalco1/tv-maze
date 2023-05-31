@@ -1,3 +1,6 @@
+import { Episodes } from '@commons/types/responses/shows';
+
 export type HomeScreensProps = {
-  Details: { id: number };
+  ShowDetails: { id: number };
+  EpisodeDetails: { episode: Episodes };
 };

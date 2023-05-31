@@ -1,3 +1,4 @@
-import Details from './screens/details';
+import ShowDetails from './screens/showDetails';
+import EpisodeDetails from './screens/episodeDetails';
 
-export { Details };
+export { ShowDetails, EpisodeDetails };

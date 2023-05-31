@@ -55,21 +55,23 @@ export interface Embedded {
     };
   }[];
 
-  episodes: {
-    airdate: string;
-    airstamp: string;
-    airtime: string;
-    id: number;
-    image: Image;
-    name: string;
-    number: number;
-    rating: { average: number };
-    runtime: number;
-    season: number;
-    summary: string;
-    type: string;
-    url: string;
-  }[];
+  episodes: Episodes[];
+}
+
+export interface Episodes {
+  airdate: string;
+  airstamp: string;
+  airtime: string;
+  id: number;
+  image: Image;
+  name: string;
+  number: number;
+  rating: { average: number };
+  runtime: number;
+  season: number;
+  summary: string;
+  type: string;
+  url: string;
 }
 export interface Schedule {
   time: string;
