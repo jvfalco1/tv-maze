@@ -92,7 +92,9 @@ export const ScheduleTime = styled.Text`
   margin-bottom: ${({ theme }) => theme.spacing.tiny};
 `;
 
-export const PlayButton = styled.TouchableOpacity`
+export const PlayButton = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.95,
+})`
   align-self: center;
   width: 95%;
   background-color: ${({ theme }) => theme.colors.white};

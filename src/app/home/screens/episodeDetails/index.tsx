@@ -13,11 +13,11 @@ const Details: React.FC = () => {
   return (
     <Container>
       <DetailHeader episode={episode} />
-      <Scroll>
-        <Section>
-          <Description>{episode.summary.replace(/<\/?[^>]+(>|$)/g, '')}</Description>
-        </Section>
-      </Scroll>
+
+      <Section>
+        <Description>{episode.summary.replace(/<\/?[^>]+(>|$)/g, '')}</Description>
+      </Section>
+
       <PlayButton>
         <PlayButtonText> Watch episode</PlayButtonText>
       </PlayButton>

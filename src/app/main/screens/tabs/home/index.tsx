@@ -43,6 +43,7 @@ const Home: React.FC = () => {
           keyExtractor={(item: Show, idx: number) => String(item.id + idx)}
           data={states.shows}
           onScroll={handler}
+          scrollEventThrottle={16}
           renderItem={renderItem}
           onEndReachedThreshold={0.5}
           onEndReached={functions.fetchNextPage}

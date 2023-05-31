@@ -2,6 +2,7 @@ import FastImage from 'react-native-fast-image';
 import LinearGradient from 'react-native-linear-gradient';
 import styled from 'styled-components/native';
 import { ScrollView } from 'react-native';
+import Animated from 'react-native-reanimated';
 
 export const Scroll = styled(ScrollView).attrs({
   contentContainerStyle: {
@@ -17,9 +18,9 @@ export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.gray_900};
 `;
 
-export const Header = styled.View`
+export const Header = styled(Animated.View)`
   position: relative;
-  height: 50%;
+  height: 400px;
 
   justify-content: space-between;
 `;
