@@ -34,6 +34,10 @@ $ yarn android
 $ yarn ios
 ```
 
+## Distribution
+
+- The APK file can be found at ```dist/``` folder at the project root.
+
 ## Libraries:
 
 - @react-native-community/blur
