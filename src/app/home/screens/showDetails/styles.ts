@@ -20,7 +20,7 @@ export const Container = styled.View`
 
 export const Header = styled(Animated.View)`
   position: relative;
-  height: 400px;
+  height: 350px;
 
   justify-content: space-between;
 `;
