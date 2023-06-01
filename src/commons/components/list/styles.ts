@@ -1,6 +1,11 @@
 import styled from 'styled-components/native';
 import Animated from 'react-native-reanimated';
 import FastImage from 'react-native-fast-image';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
+type IconProps = {
+  isFavorited: boolean;
+};
 
 export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.gray_800};
@@ -43,4 +48,15 @@ export const ChipsContainer = styled.View`
   flex-wrap: wrap;
 
   width: 100%;
+`;
+
+export const FavoriteContainer = styled.TouchableOpacity.attrs({ activeOpacity: 0.95 })`
+  padding: ${({ theme }) => theme.spacing.small};
+`;
+
+export const HeartIcon = styled(FontAwesome).attrs(({ isFavorited }: IconProps) => ({
+  name: isFavorited ? 'heart' : 'heart-o',
+}))<IconProps>`
+  color: ${({ theme }) => theme.colors.white};
+  font-size: 18px;
 `;

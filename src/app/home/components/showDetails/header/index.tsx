@@ -23,8 +23,8 @@ type Props = {
 };
 
 const _MAX_HEIGHT = Platform.OS === 'ios' ? 400 : 360;
-const _MIN_HEIGHT = Platform.OS === 'ios' ? 200 : 200;
-const _START_ANIMATION_AT = Platform.OS === 'ios' ? 50 : 50;
+const _MIN_HEIGHT = Platform.OS === 'ios' ? 200 : 250;
+const _START_ANIMATION_AT = Platform.OS === 'ios' ? 200 : 200;
 const _INITIAL_SCROLL_VALUE = 0;
 
 const inputRange = [_INITIAL_SCROLL_VALUE, _START_ANIMATION_AT];

@@ -1,7 +1,7 @@
 import useEpisodeDetail from '@commons/hooks/useEpisodeDetails';
 import React from 'react';
 
-import { Container, Description, PlayButton, PlayButtonText, Scroll, Section } from './styles';
+import { Container, Description, PlayButton, PlayButtonText, Section } from './styles';
 
 import DetailHeader from '@app/home/components/episodeDetails/header';
 

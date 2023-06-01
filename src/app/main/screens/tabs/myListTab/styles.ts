@@ -1,9 +1,16 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
+
+import { Show } from '@commons/types/responses/shows';
+import { FlashList } from '@shopify/flash-list';
 
 export const Container = styled.View`
-  align-items: center;
   flex: 1;
-  justify-content: center;
+  padding-bottom: ${({ theme }) => theme.spacing.huge};
+  background-color: ${({ theme }) => theme.colors.gray_700};
 `;
 
-export const Text = styled.Text``;
+export const List = styled(FlashList<Show>).attrs({
+  contentContainerStyle: {
+    padding: 16,
+  },
+})``;

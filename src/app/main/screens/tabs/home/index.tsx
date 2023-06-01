@@ -5,18 +5,22 @@ import { ListRenderItem } from '@shopify/flash-list';
 import Loader from '@commons/components/loader';
 
 import Header from './components/home/header';
-import ListItem from './components/home/list/ListItem';
+import ListItem from '@commons/components/list/ListItem';
 
 import useHome from '@commons/hooks/useHome';
 
 import { Show } from '@commons/types/responses/shows';
 
 import { Container, List } from './styles';
+import useFavorites from '@commons/hooks/useFavorites';
 
 const AnimatedList = Animated.createAnimatedComponent(List);
 
 const Home: React.FC = () => {
   const { states, functions } = useHome();
+  const {
+    functions: { handleAddFavorite },
+  } = useFavorites();
 
   const scrollValue = useSharedValue(0);
 
@@ -26,7 +30,10 @@ const Home: React.FC = () => {
     },
   });
 
-  const renderItem: ListRenderItem<Show> = useCallback(({ item }) => <ListItem item={item} />, []);
+  const renderItem: ListRenderItem<Show> = useCallback(
+    ({ item }) => <ListItem item={item} onFavorite={handleAddFavorite} />,
+    [handleAddFavorite],
+  );
   const listFooterComponent: ListRenderItem<Show> = useCallback(
     () => <Loader isLoading={states.isFetchingNextPage} />,
     [states.isFetchingNextPage],
